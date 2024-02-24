@@ -16,46 +16,46 @@ Enter the following two lines of codes in the terminal，and the APP will be run
 $env:FLASK_APP = "blockchain.py" 
 flask run    # The first node, represented by default port 5000  
 ```
-![img.png](Screenshots/img.png)  
+
 
 Enter the following codes in a new terminal, and then the APP can be running on more ports.   
 ```Python
 $env:FLASK_APP = "blockchain.py"
 flask run --port 5001      # Node 2, represented by port 5001
 ```
-![img_1.png](Screenshots/img_1.png)   
+ 
 
 Repeat as above.    
 ```Python
 $env:FLASK_APP = "blockchain.py"
 flask run --port 5002      # Node 3, represented by port 5002
 ```
-![img_2.png](Screenshots/img_2.png)   
+ 
 
 Use _Postman_ to send the information about the three nodes to http://127.0.0.1:5000/new_node. Select "POST".  
 After sending, the APP will call the _new_node()_ function in _blockchain.py_ and register the three new nodes.  
-![img_3.png](Screenshots/img_3.png)  
+
 
 Send a piece of transactional information to http://127.0.0.1:5000/new_transactions. Select "POST".  
 After sending, the APP will call the _new_transactions()_ function in _blockchain.py_ and store the transaction into the next block of the blockchain.  
-![img_4.png](Screenshots/img_4.png)  
+
 
 Get the election results from http://127.0.0.1:5000/election. Select "GET".  
 After sending, the APP will call the _show_election()_ function in _blockchain.py_, and the webpage will show the election results.  
-![](Screenshots/img_5.png)  
+
 In the terminal, the entire process of VRF for each node will be shown in detail, including "prove" and "verify" as well as a series of parameters involved.  
-![](Screenshots/img_6.png)  
+
 
 For example, in this experiment the node represented by port 5002 has been selected to be the miner.  
 Perform mining at http://127.0.0.1:5002/mine, and get related information. Select "GET".  
-![](Screenshots/img_7.png)  
+ 
 
 Information about the updated blockchain can be got from http://127.0.0.1:5002/chain. Select "GET".  
 Now a newly generated block from the previous mining has been added to the end of the blockchain.  
-![](Screenshots/img_8.png)  
+
 However, the blockchain has not been updated on other nodes.
-![](Screenshots/img_9.png)  
+ 
 
 For Node 1, its blockchain can be updated at http://127.0.0.1:5000/node_refresh. Select "POST".  
-![](Screenshots/img_10.png)  
+
 And it is the same for other nodes.
